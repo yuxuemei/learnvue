@@ -2,6 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require("webpack")
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -18,6 +19,13 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  plugins: [
+   new webpack.optimize.CommonsChunkPlugin('common.js'),
+   new webpack.ProvidePlugin({
+       jQuery: "jquery",
+       $: "jquery"
+   })
+  ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
@@ -57,6 +65,9 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+    ],
+    loaders: [
+        {test: /\.css$/, loader: 'style-loader!css-loader'}//2.0貌似不支持缩写了
     ]
   }
 }

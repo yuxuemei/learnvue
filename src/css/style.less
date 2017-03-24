@@ -1,28 +1,353 @@
-
-@f32px:0.32rem;
-@link-color: red;
 @30px:0.3rem;
 @52px:0.52rem;
 @scroll:scroll;
 @hidden:hidden;
-@overflow:overflow;
-.flagList{
-	overflow:@scroll;
-	width:100%;
+@percent100:100%;
+@left:left;
+@right:right;
+@absolute:absolute;
+@base-url: "./../image";
+@icon-more-url: "/more.png";
+html,body,p,ul,ol{
+  margin:0;
+  padding:0;
 }
-.flag{
-    width: 659px;
-    overflow:@hidden;
-	height:0.88rem;
-	line-height:0.88rem;
+li{
+	list-style-type: none;
+}
+html,body,#app{
+	height: @percent100;
+}
+a{
+	text-decoration: none;
+}
+.color888{
+	color: #888888;
+}
+.color666{
+	color: #666;
+}
+.color-money{
+	color: #F25;
+}
+.color-title{
+	color: #212833;
+}
+.left{
+	float: @left;
+}
+.right{
+	float: @right;
+}
+.flex{
+	display: flex;
+}
+.clearfix{
+	overflow: hidden;
+}
+.pl30{
 	padding-left:@30px;
+}
+.pr30{
 	padding-right:@30px;
+}
+.pt30{
+	padding-top:@30px;
+}
+.pb30{
+	padding-bottom:@30px;
+}
+.mt30{
+	margin-top:@30px;
+}
+.center{
+	text-align: center;
+}
+.fontSize(@size:0.3rem){
+	font-size: @size;
+}
+.marginT(@px:0.3rem){
+	margin-top: @px;
+}
+.paddL(@px){
+   padding-left:@px;
+}
+.radius(@radius){
+   border-radius:@radius;
+}
+.moreDot{
+  text-overflow: ellipsis;
+  word-wrap:normal;
+  white-space: nowrap;
+  overflow: hidden; 
+ }
+.fixed(){
+	position: fixed;
+}
+.border-bottom{
 	border-bottom: 1px solid #e8e8e8;
 }
+.bg-white{
+	background-color: #ffffff;
+}
+
+/*******---------------菜单---------------*******/
+ #app{
+    .flex();
+    -webkit-flex-direction:column;
+    -ms-flex-direction:column;
+    flex-direction:column;
+    height:100%;
+    background-color: #f6f6f6;
+  }
+  .view{
+    flex: 1;
+    overflow: @scroll;
+  }
+  .menu{
+    .flex();
+    text-align: center;
+    height: 1rem;
+    .fontSize(0.24rem);
+    border-top: 1px solid #E5E5E5;
+  }
+  .menu a{
+    flex: 1;
+    color: #666;
+  }
+  .menu img{
+  	width: 0.42rem;
+    height: 0.42rem;
+    .marginT(0.1rem);
+  }
+  .menu p{
+  	.marginT(0.05rem);
+  }
+
+/*******---------------首页---------------*******/
+*{
+	-webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.header{
+	.flex();
+	height: 0.92rem;
+	padding:0.15rem 0.1rem;
+	.fixed();
+	top: 0;
+	width: 100%;
+}
+.search-index{
+	flex:1;
+}
+.search{
+	width: 5.3rem;
+    height: 0.6rem;
+    .paddL(0.6rem);
+    .fontSize(0.24rem);
+    color: #999;
+    border: none;
+    background: #eee url("https://s2.mogucdn.com/p2/170315/40592144_0b8i11l822b0adfjaaifl11ig86f1_44x44.png") no-repeat 0.15rem center;
+    background-size: 0.31rem auto;
+    border-radius: 0.06rem;
+    .radius(0.06rem);
+	.fixed();
+	top: 0.15rem;
+}
+@base-icon: "https://s2.mogucdn.com/p2/170315/";
+@icon-talk-url: "40592144_0b8i11l822b0adfjaaifl11ig86f1_44x44.png";
+@icon-car-url: "40592144_67ja8jj102089fj6djai0l6khb0h5_44x44.png";
+.im-talk,.im-car{
+    display: inline-block;
+    width: 1rem;
+    height: 100%;
+}
+.im-talk{
+	background: url("@{base-icon}@{icon-talk-url}") no-repeat 0.27rem center;
+    background-size: 0.44rem auto;
+}
+.im-car{
+	background: url("@{base-icon}@{icon-car-url}") no-repeat 0.27rem center;
+    background-size: 0.44rem auto;
+}
+.carousel{
+	.marginT(0.92rem);
+}
+.carousel img{
+	width: @percent100;
+}
+.advert{
+	.flex();
+}
+.advert>div{
+	flex:1;
+}
+.advert-item{
+	.center();
+	p{
+		.fontSize(.28rem);
+	}
+	section{
+		.fontSize(.24rem);
+		.color666();
+		margin: 0.05rem auto 0.15rem;
+	}
+	img{
+		width: 1rem;
+		margin: 0 auto;
+	}
+}
+.rob{
+	.marginT(.2rem);
+}
+.rob-title{
+	.left();
+	.fontSize();
+	padding: 0.3rem 0.35rem 0.2rem .3rem;
+}
+.rob-arrow{
+    .right();    
+    margin-right: 0.35rem;
+    .marginT(-.3rem);
+    img{
+    	height: 0.25rem;
+    	margin-top: -0.02rem;
+    }
+}
+.rob-list{
+	overflow: @scroll;
+	width: 100%;
+	margin: 0.1rem 0 0.16rem 0.3rem;
+}
+.rob-item{
+    overflow: @hidden;
+    min-width: 100%;
+    li{
+	    float: left;
+	    white-space: nowrap;
+        width: 1.8rem;
+	    height: 2.5rem;
+	    margin-right: 0.2rem;
+	    img{
+            width: 1.5rem;
+            margin: 0 0.15rem;
+	    }
+	    p{
+            .fontSize(.2rem);
+            .moreDot();
+            margin-bottom: 0.08rem;
+	    }
+	    small{
+	    	.fontSize(.26rem);
+	    }
+    }
+}
+.rob-item del{
+	.fontSize(.2rem);
+}
+.selling{
+	.marginT(.2rem);
+	.head{
+	    height: .8rem;
+	    line-height: .84rem;
+	    color: #333;
+	    text-indent: .2rem;
+	    .fontSize(.28rem);
+	    font-weight: normal;
+	}
+}
+.selling-warp{
+	.flex();
+	flex-direction:row;
+	div{
+		flex:1;
+		border-right: 1px solid #ddd;
+	}
+	p{
+		.fontSize(.28rem);
+		font-weight: bold;
+	}
+	section{
+		.fontSize(.24rem);
+		color: #999;
+		.marginT(.1rem);
+
+	}
+	img{
+		width: 2.2rem;
+	}
+}
+/*******---------------列表---------------*******/
+.flag-list{
+	overflow:@scroll;
+	width:6.62rem;
+	.border-bottom();
+}
+.headerH{
+	height:0.88rem;
+	line-height:0.88rem;
+}
+.flag{
+    overflow:@hidden;
+	.headerH();
+	.pl30();
+	.pr30();
+	min-width:@percent100;
+}
 .flag li{
-    list-style-type: none;
-	font-size:@f32px;
+	.fontSize(0.32rem);
 	margin-right:@52px;
-	float: left;
+	float: @left;
     white-space: nowrap;
+}
+.flag li:last-child{margin-right:0;}
+.flag-more{
+	position:@absolute;
+	top:0;
+	right:0;
+	.headerH();
+	width:0.88rem;
+	background: url("@{base-url}@{icon-more-url}") center no-repeat;
+	background-size: 50%;
+	.bg-white();
+	box-shadow: -1px 0 3px rgba(0,0,0,.1);
+	-moz-box-shadow: -1px 0 3px rgba(0,0,0,.1);
+    -webkit-box-shadow: -1px 0 3px rgba(0,0,0,.1);
+}
+.article-item{
+	display: flex;
+	.border-bottom();
+	.pl30(); 
+	.pr30(); 
+	.pt30(); 
+	.pb30();
+}
+.article-item div{
+	height: 1.2rem;
+}
+.article-item div:first-child{
+	width: 2.44rem;
+}
+.article-item div:last-child{
+	flex:1;
+}
+.article-item img{
+	width:2.14rem;
+	height: 1.2rem;
+	.fontSize(0.3rem);
+}
+.item-title{
+	height: .96rem;
+	line-height: .48rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	.fontSize(0.34rem); 
+	.color-title();
+}
+.item-info{
+	.fontSize(0.24rem);
+	.color888();
 }

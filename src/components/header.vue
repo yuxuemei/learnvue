@@ -9,11 +9,11 @@ export default {
       msg: 'component header'
     }
   },
-  props:['msgfromfather'], //设置要不要接受父组件的参数
+  //props:['msgfromfather'], //设置要不要接受父组件的参数
   methods:{
     clickMe:function(){
-        console.log(this.msgfromfather);
-        this.$emit("child-message",this.msg)
+        //console.log(this.msgfromfather);
+        //this.$emit("child-message",this.msg)
     }
   }
 }
