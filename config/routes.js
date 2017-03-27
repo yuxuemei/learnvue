@@ -16,5 +16,5 @@ export default[
   component:content
 },{
   path:'/mine',
-  component:content
+  component:mine
 }]

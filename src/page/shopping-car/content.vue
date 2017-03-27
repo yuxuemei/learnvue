@@ -1,6 +1,5 @@
 <template>
   <div>
-	  <my-component></my-component>
-	  content
+	  购物车
   </div>
 </template>
