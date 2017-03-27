@@ -115,10 +115,10 @@
                width:{}
 		    }
 	    },
-      //加载即执行
-      mounted:function(){
-         var count = $(".rob-item li").length;
-         this.width = {"width":(2*count)+0.16+"rem"};
+        //加载即执行
+        mounted:function(){
+           var count = $(".rob-item li").length;
+           this.width = {"width":(2*count)+0.16+"rem"};
       }
 	}
 </script>

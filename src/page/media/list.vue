@@ -22,7 +22,6 @@
   </div>
 </template>
 <script>
-  import common from './../../common'
 	export default {
 	    data:function(){
 		    return{
@@ -48,7 +47,7 @@
            }],
            articleList:[],
            width:{},
-           img_base:common.IMG_BASEURL
+           img_base:this.IMG_BASEURL
 		    }
 	    },
       //加载即执行
@@ -56,7 +55,7 @@
          var count = $(".flag li").length;
          this.width = {"width":(1.26*count)-1.12+"rem"};
          var _self=this;
-         common.getDataComb({
+         this.ajax({
             url:"/user/v1/query-article-list-front?o=0&requestType=app",
             data:"companyCategoryIds=''&pageNumber=0",
             needToken:false,

@@ -21,6 +21,9 @@ require('!style-loader!css-loader!less-loader!./css/style.less');
 import header from './components/header'
 // 注册全局组件
 Vue.component('my-component', header)
+// 引入公共js
+import common from './common'
+Vue.use(common)
 //Vue.component('menu', menu)
 /* eslint-disable no-new */
 new Vue({
