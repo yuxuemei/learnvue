@@ -1,6 +1,6 @@
 export default{
     install(Vue){
-        Vue.prototype.BASE_URL = "http://192.168.1.77:8080";
+        Vue.prototype.BASE_URL = "http://192.168.1.25:8080";
         //图片根目录
         Vue.prototype.IMG_BASEURL = "http://f.elnplus.com";
         var common = {
@@ -106,7 +106,12 @@ export default{
                         data = pageParam;
                     }
                 }
-                var url = common.checkUrlHasParam(common.BASE_URL + obj.url + data,needToken);
+                var url = "";
+                if(obj.url.indexOf("http") == -1){
+                    url = common.checkUrlHasParam(Vue.prototype.BASE_URL + obj.url + data,needToken);
+                }else{
+                    url = obj.url;
+                }
                 common.publicRequest(type,url,remind,obj.callback);
             }
         }
@@ -114,5 +119,4 @@ export default{
             common.getDataComb(obj);
         };
     }
-	
 }

@@ -1,4 +1,5 @@
 @30px:0.3rem;
+@20px:0.2rem;
 @52px:0.52rem;
 @scroll:scroll;
 @hidden:hidden;
@@ -8,7 +9,7 @@
 @absolute:absolute;
 @base-url: "./../image";
 @icon-more-url: "/more.png";
-html,body,p,ul,ol{
+html,body,p,ul,ol,h1,h2,h3,h4,h5,h6{
   margin:0;
   padding:0;
 }
@@ -45,6 +46,9 @@ a{
 .clearfix{
 	overflow: hidden;
 }
+.pl20{
+	padding-left:@20px;
+}
 .pl30{
 	padding-left:@30px;
 }
@@ -66,11 +70,38 @@ a{
 .fontSize(@size:0.3rem){
 	font-size: @size;
 }
+.borderT{
+	border-top: 1px solid #ddd;
+}
 .marginT(@px:0.3rem){
 	margin-top: @px;
 }
-.paddL(@px){
+.marginL(@px:0.3rem){
+	margin-left: @px;
+}
+.marginR(@px:0.3rem){
+	margin-right: @px;
+}
+.marginB(@px:0.3rem){
+	margin-bottom: @px;
+}
+.margin(@px:0.3rem){
+	margin: @px @px @px @px;
+}
+.padding(@px:0.3rem){
+	padding: @px @px @px @px;
+}
+.paddL(@px:0.3rem){
    padding-left:@px;
+}
+.paddR(@px:0.3rem){
+   padding-right:@px;
+}
+.paddT(@px:0.3rem){
+   padding-top:@px;
+}
+.paddB(@px:0.3rem){
+   padding-bottom:@px;
 }
 .radius(@radius){
    border-radius:@radius;
@@ -197,6 +228,7 @@ a{
 		margin: 0 auto;
 	}
 }
+
 .rob{
 	.marginT(.2rem);
 }
@@ -216,12 +248,14 @@ a{
 }
 .rob-list{
 	overflow: @scroll;
-	width: 100%;
+	width: 7.2rem;
 	margin: 0.1rem 0 0.16rem 0.3rem;
 }
-.rob-item{
+.rob-item,.special-item{
     overflow: @hidden;
     min-width: 100%;
+}
+.rob-item{
     li{
 	    float: left;
 	    white-space: nowrap;
@@ -245,6 +279,7 @@ a{
 .rob-item del{
 	.fontSize(.2rem);
 }
+
 .selling{
 	.marginT(.2rem);
 	.head{
@@ -257,26 +292,93 @@ a{
 	}
 }
 .selling-warp{
+	border-top: 1px solid #ddd;
 	.flex();
 	flex-direction:row;
-	div{
-		flex:1;
-		border-right: 1px solid #ddd;
-	}
+	
 	p{
 		.fontSize(.28rem);
 		font-weight: bold;
+		.marginT(.54rem);
 	}
 	section{
 		.fontSize(.24rem);
 		color: #999;
 		.marginT(.1rem);
-
 	}
-	img{
+	img.big{
 		width: 2.2rem;
 	}
+	img.small{
+		width: 1.8rem;
+	}
 }
+.selling-warp>div{
+	flex:1;
+	border-right: 1px solid #ddd;
+}
+
+.special{
+	.borderT();
+	.paddL(0.2rem);
+	.paddR(0.2rem);
+	.paddT(0.2rem);
+	.marginB(-0.2rem);
+	img{
+		.radius(0.1rem);
+	}
+}
+.special-list{
+	overflow: @scroll;
+    width: @percent100;
+}
+.special-item{
+	.marginL(0.2rem);
+}
+.special-item img{
+    .marginR(0.16rem);
+    height: 1.56rem;
+    .marginT(0.2rem);
+    .radius(0.1rem);
+}
+.special-item p{
+	.fontSize(0.25rem);
+}
+
+.guss-like h2{
+    .fontSize(0.3rem);
+    color: #333;
+    width: 3.13rem;
+    background: url(http://s18.mogucdn.com/p1/160415/upload_ifrwkyzymu2damdgg4zdambqhayde_313x10.png) center center no-repeat;
+    background-size: 3.13rem auto;
+    line-height: 1;
+    margin: 0.2rem auto;
+}
+.ware{
+	.marginR(0.2rem);
+}
+.ware-item{
+	.marginL(0.2rem);
+	width: 3.45rem;
+	img{
+		width: @percent100;
+		height: 4.62rem;
+	}
+	.props{
+		height: .9rem;
+	}
+	.prop{
+		float: left;
+	    height: .36rem;
+	    line-height: .36rem;
+	    padding: 0 .06rem;
+	    margin: 0 0 .06rem .06rem;
+	    font-size: .22rem;
+	    background: #eff3f6;
+	    color: #5a6f7a;
+	}
+}
+
 /*******---------------列表---------------*******/
 .flag-list{
 	overflow:@scroll;
@@ -317,13 +419,13 @@ a{
 .article-item{
 	display: flex;
 	.border-bottom();
-	.pl30(); 
-	.pr30(); 
-	.pt30(); 
-	.pb30();
+	.marginL();
+	.marginR();
 }
 .article-item div{
 	height: 1.2rem;
+	.marginT();
+	.marginB();
 }
 .article-item div:first-child{
 	width: 2.44rem;
