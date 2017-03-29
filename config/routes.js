@@ -7,14 +7,18 @@ import mine from '../src/page/user/mine.vue'
 export default[
 {
   path:'/',
-  component:home
+  component:home, 
+  name: '首页'
 },{
   path:'/list',
-  component:list
+  component:list,
+  name: '文章'
 },{
   path:'/content',
-  component:content
+  component:content,
+  name: '购物车'
 },{
   path:'/mine',
-  component:mine
+  component:mine,
+  name: '我的'
 }]

@@ -2,22 +2,10 @@
   <div id="app">
       <router-view class="view" keep-alive transiton transiton-mode="out-in"></router-view>
       <div class="menu bg-white">
-          <router-link to="/">
-            <img src="https://s2.mogucdn.com/p2/170315/40592144_6ii829464gk34ai4hkdf14cdea05d_44x44.png">
-            <p class="menu-title">首页</p>
+          <router-link v-bind:to="nav.to" v-for="(nav,index) in navList" v-on:click.native="navActive(index)">
+            <img v-bind:src="nav.imgNormal" v-bind:id="index">    
+            <p class="menu-title" v-text="nav.name">首页</p>
           </router-link>  
-          <router-link to="/list">
-            <img src="https://s2.mogucdn.com/p2/170315/40592144_0b8i11l822b0adfjaaifl11ig86f1_44x44.png">
-            <p class="menu-title">文章</p>
-          </router-link> 
-          <router-link to="/content">
-          <img src="https://s2.mogucdn.com/p2/170315/40592144_67ja8jj102089fj6djai0l6khb0h5_44x44.png">
-            <p class="menu-title">购物车</p>
-          </router-link> 
-          <router-link to="/mine">
-            <img src="https://s2.mogucdn.com/p2/170315/40592144_35ikl8db8a4lfa3f29k8k4b9k3ji2_44x44.png">
-            <p class="menu-title">我的</p>
-          </router-link>
       </div>
   </div>
 </template>
@@ -25,7 +13,27 @@
 export default {
   data:function(){
      return{
-        title:"this is a todo list"
+        navList:[{
+          to:"/",
+          imgNormal:require("./image/icon_home.png"),
+          imgActive:require("./image/icon_home_clicked.png"),
+          name:"首页"
+        },{
+          to:"/list",
+          imgNormal:require("./image/icon_article.png"),
+          imgActive:require("./image/icon_article_clicked.png"),
+          name:"文章"
+        },{
+          to:"/content",
+          imgNormal:require("./image/icon_course.png"),
+          imgActive:require("./image/icon_course_clicked.png"),
+          name:"购物车"
+        },{
+          to:"/mine",
+          imgNormal:require("./image/icon_mine.png"),
+          imgActive:require("./image/icon_mine_clicked.png"),
+          name:"我的"
+        }]
      }
   },
   methods:{
@@ -55,11 +63,38 @@ export default {
             // 初始化
             setFontSize();
         }(window, document));
+    },
+    /*导航选中更改选中图标*/
+    navActive:function(index){
+      var _activeImg = $(".menu a img.active");
+      var oldIndex = _activeImg.attr("id"); 
+      //把之前的恢复默认
+      $("#"+oldIndex).attr("src",this.navList[oldIndex].imgNormal);
+      //把当先选中的激活图标
+      $("#"+index).attr("src",this.navList[index].imgActive);
+      if(index){
+        $(".menu a").eq(0).removeClass("router-link-active");
+      }else{
+        $(".menu a").eq(0).addClass("router-link-active");
+      }
+      //先把之前的删掉 再添加
+      $("img").removeClass("active");
+      $(".menu a").eq(index).find("img").addClass("active");
     }
   },
   //加载即执行
   mounted:function(){
     this.remCalc();
+    var url = location.href;
+    var urlArray = url.split("/");
+    var len =urlArray.length;
+    if(urlArray[len-1]){
+        $(".menu a").eq(0).removeClass("router-link-active");
+    }
+    var _activeImg = $(".menu .router-link-active img");
+    var index = _activeImg.attr("id");
+    $("#"+index).attr("src",this.navList[index].imgActive);
+    _activeImg.addClass("active");
   }
 }
 </script>

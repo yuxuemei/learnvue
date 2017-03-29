@@ -66,8 +66,10 @@ module.exports = {
         }
       }
     ],
-    loaders: [
-        {test: /\.css$/, loader: 'style-loader!css-loader'}//2.0貌似不支持缩写了
+    loaders: [{
+          test: /\.css$/, 
+          loader: 'style-loader!css-loader'
+      }
     ]
   }
 }

@@ -19,6 +19,9 @@ li{
 html,body,#app{
 	height: @percent100;
 }
+.hidden{
+	display: none;
+}
 a{
 	text-decoration: none;
 }
@@ -156,6 +159,9 @@ a{
   }
 
 /*******---------------首页---------------*******/
+.menu a.router-link-active{
+	color: #55c0ff;
+}
 *{
 	-webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -359,6 +365,7 @@ a{
 }
 .ware-item{
 	.marginL(0.2rem);
+	.marginB(0.2rem);
 	width: 3.45rem;
 	img{
 		width: @percent100;
@@ -366,6 +373,9 @@ a{
 	}
 	.props{
 		height: .9rem;
+		.paddL(.06rem);
+		.paddR(.06rem);
+		overflow-y: @hidden;
 	}
 	.prop{
 		float: left;
@@ -377,6 +387,19 @@ a{
 	    background: #eff3f6;
 	    color: #5a6f7a;
 	}
+}
+.like-price{
+    .fontSize();
+    .paddL(.06rem);
+    .paddB(.06rem);
+    font-weight: 700;
+    color: #333;
+}
+.like-zan{
+	.paddR(.06rem);
+	.paddB(.06rem);
+	.fontSize(.24rem);
+	color:#999;
 }
 
 /*******---------------列表---------------*******/

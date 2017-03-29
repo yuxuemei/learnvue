@@ -25,7 +25,6 @@
 	export default {
 	    data:function(){
 		    return{
-		       lists:[],
            flagList:[{
               id:1,
               name:"社会"

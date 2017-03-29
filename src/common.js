@@ -1,6 +1,6 @@
 export default{
     install(Vue){
-        Vue.prototype.BASE_URL = "http://192.168.1.25:8080";
+        Vue.prototype.BASE_URL = "http://192.168.1.77:8080";
         //图片根目录
         Vue.prototype.IMG_BASEURL = "http://f.elnplus.com";
         var common = {

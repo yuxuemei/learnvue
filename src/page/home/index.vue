@@ -17,7 +17,7 @@
 		    <div class="advert-item">
 		        <p>团购</p>
 		        <section>量版买就送</section>
-		        <img src="https://s2.mogucdn.com/p2/170317/105897215_7fecl8jg88ige3lgbfbhb5i17079i_200x200.jpg_300x9999.v1c7E.70.webp" alt="团购">
+		        <img src="https://s2.mogucdn.com/mlcdn/c45406/170327_54l2hcg5l8d59bhef6h32lfk3jh19_216x216.jpg_300x9999.v1c7E.70.webp" alt="团购">
 		    </div>
 		    <div class="advert-item">
 		        <p>优选</p>
@@ -135,10 +135,14 @@
 		    <h2 class="center">猜你喜欢</h2>
 		    <div class="clearfix ware">
 		    	<div class="left ware-item bg-white" v-for="like in likeList">
-		    	   <img v-bind:src="like.img" v-bind:alt="like.title">
-		    	   <div  class="props">
-		    	   	   <span v-for="prop in like.props" class="prop" v-text="prop"></span>
-		    	   </div>
+		    	   <a v-bind:href="like.clientUrl" v-bind:alt="like.title">
+			    	   <img v-bind:src="like.img" v-bind:alt="like.title">
+			    	   <div  class="props">
+			    	   	   <span v-for="prop in like.props" class="prop" v-text="prop"></span>
+			    	   </div>
+			    	   <span v-text="'￥'+like.price" class="left like-price"></span>
+			    	   <span v-text="like.cfav" class="right like-zan"></span>
+		    	   </a>
 		    	</div>
 		    </div>
 		</div>
@@ -153,7 +157,7 @@
 		              name:"红豆薏米粉500g美白祛湿",
 		              money:17.6,
 		              price:20,
-		              imgurl:"http://s17.mogucdn.com/p2/170316/upload_7he4d69k95a4579j84f8ec4b284d5_640x640.jpg_320x999.webp"
+		              imgurl:"http://s2.mogucdn.com/p2/170320/upload_0ia0e8bg03584a7k7fk2kdc75i146_640x640.jpg_320x999.webp"
 		             },{
 		              id:2,
 		              name:"自然堂雪域纯粹",
