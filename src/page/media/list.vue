@@ -9,14 +9,16 @@
     </div>
     <div class="bg-white">
         <div class="article-item" v-for="(article,index) in articleList">
-           <div><img v-bind:src="img_base+article.imgUrl" v-bind:alt="article.title"></div>
-           <div>
-             <p class="item-title" v-text="article.title" ></p>
-             <p class="item-info">
-               <span v-text="article.createTime" ></span>
-               <span class="right" v-on:click="deleteData(index)">删除</span>
-             </p>
-           </div>
+           <a href="#/detail.vue" target="_blank">
+               <div><img v-bind:src="img_base+article.imgUrl" v-bind:alt="article.title"></div>
+               <div>
+                 <p class="item-title" v-text="article.title" ></p>
+                 <p class="item-info">
+                   <span v-text="article.createTime" ></span>
+                   <span class="right" v-on:click="deleteData(index)">删除</span>
+                 </p>
+               </div>
+           </a>
         </div>
     </div>
   </div>

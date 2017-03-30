@@ -1,0 +1,3 @@
+<template>
+	详情页
+</template>

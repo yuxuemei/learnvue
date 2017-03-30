@@ -4,7 +4,7 @@
       <div class="menu bg-white">
           <router-link v-bind:to="nav.to" v-for="(nav,index) in navList" v-on:click.native="navActive(index)">
             <img v-bind:src="nav.imgNormal" v-bind:id="index">    
-            <p class="menu-title" v-text="nav.name">首页</p>
+            <p class="menu-title" v-text="nav.name"></p>
           </router-link>  
       </div>
   </div>

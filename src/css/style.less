@@ -7,6 +7,7 @@
 @left:left;
 @right:right;
 @absolute:absolute;
+@relative:relative;
 @base-url: "./../image";
 @icon-more-url: "/more.png";
 html,body,p,ul,ol,h1,h2,h3,h4,h5,h6{
@@ -31,11 +32,17 @@ a{
 .color666{
 	color: #666;
 }
+.color333{
+	color: #333;
+}
 .color-money{
 	color: #F25;
 }
 .color-title{
 	color: #212833;
+}
+.color-white{
+	color: #ffffff;
 }
 .left{
 	float: @left;
@@ -105,6 +112,9 @@ a{
 }
 .paddB(@px:0.3rem){
    padding-bottom:@px;
+}
+.vertical(@ver:middle){
+	vertical-align: @ver;
 }
 .radius(@radius){
    border-radius:@radius;
@@ -291,7 +301,7 @@ a{
 	.head{
 	    height: .8rem;
 	    line-height: .84rem;
-	    color: #333;
+	    .color333();
 	    text-indent: .2rem;
 	    .fontSize(.28rem);
 	    font-weight: normal;
@@ -353,7 +363,7 @@ a{
 
 .guss-like h2{
     .fontSize(0.3rem);
-    color: #333;
+    .color333();
     width: 3.13rem;
     background: url(http://s18.mogucdn.com/p1/160415/upload_ifrwkyzymu2damdgg4zdambqhayde_313x10.png) center center no-repeat;
     background-size: 3.13rem auto;
@@ -393,7 +403,7 @@ a{
     .paddL(.06rem);
     .paddB(.06rem);
     font-weight: 700;
-    color: #333;
+    .color333();
 }
 .like-zan{
 	.paddR(.06rem);
@@ -442,8 +452,12 @@ a{
 .article-item{
 	display: flex;
 	.border-bottom();
-	.marginL();
-	.marginR();
+	.paddL();
+	.paddR();
+	a{
+		display: inline-flex;
+        width: @percent100;
+	}
 }
 .article-item div{
 	height: 1.2rem;
@@ -475,4 +489,105 @@ a{
 .item-info{
 	.fontSize(0.24rem);
 	.color888();
+}
+
+/*******---------------我的---------------*******/
+.mine-header{
+	height: 1.8rem;
+	img:first-child{
+		width: 1.2rem;
+		height: 1.2rem;
+		.radius(.6rem);
+		.marginT(.3rem);
+		.marginL(.4rem);
+		.marginR(.2rem);
+	}
+	div{
+		.marginT(-.15rem);
+	}
+	span{
+		.fontSize(.36rem);
+	}
+	p{
+		.fontSize(.24rem);
+	}
+	.arrow{
+		.marginT(.68rem);
+	}
+}
+.arrow{
+	width: .15rem;
+	.marginR(.4rem);
+}
+.order{
+	.marginT(.2rem);
+}
+.orderT{
+	.fontSize(.32rem);
+	line-height: 1rem;
+	img:first-child{
+		width: .56rem;
+	    height: .56rem;
+	    margin: .23rem;
+	    .radius(.28rem);
+	}
+	.arrow{
+		.marginT(.35rem);
+	}
+}
+
+.order-tab{
+	.flex();
+	line-height: .6rem;
+	flex-direction:row;
+	section{
+		.fontSize(.28rem);
+		.color333();
+	}
+	img{
+		width: .38rem;
+		.vertical();
+	}
+	.point-icon{
+		background-color: #f5123e;
+		.fontSize(.22rem);
+		.color-white();
+		width: .34rem;
+	    height: .34rem;
+	    line-height: .34rem;
+	    border-radius: 50%;
+	    position: @absolute;
+	    top: .1rem;
+        right: .55rem;
+	}
+}
+.order-tab>div{
+	flex:1;
+	position: @relative;
+}
+.app-download{
+	.marginT(.2rem);
+	.fontSize(0);
+	img{
+		width: @percent100;
+	}
+}
+.mine-list{
+	.marginT(.2rem);
+	.bg-white();
+}
+.mine-list .orderT>div{
+	width: 6.3rem;
+	border-bottom: 1px solid #eee;
+}
+.button-reb{
+	width: 6.6rem;
+	margin: .3rem auto;
+    height:.8rem;
+    line-height: .8rem;
+    background-color: #ff5777;
+    .color-white();
+    .fontSize();
+    .radius(.1rem);
+    .center();
 }
