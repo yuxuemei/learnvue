@@ -2,7 +2,7 @@ export default{
     install(Vue){
         Vue.prototype.BASE_URL = "http://192.168.1.77:8080";
         //图片根目录
-        Vue.prototype.IMG_BASEURL = "http://f.elnplus.com";
+        Vue.prototype.IMG_BASEURL = "http://f.zhixianyun.com";
         var common = {
             getUser(){
                 var userObj = localStorage.getItem("user");

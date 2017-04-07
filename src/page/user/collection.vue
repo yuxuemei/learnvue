@@ -1,7 +1,8 @@
 <template>
   <div>
-  	<span>文章id：{{$route.params.id}}</span>
-  	<span>文章类型：{{$route.params.name}}</span>
+  	<router-link to="/collection/detail">
+  	进入详情
+    </router-link>
   </div>
 </template>
 <script>

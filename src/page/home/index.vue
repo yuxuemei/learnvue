@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<my-component></my-component>
 	    <!-- 模仿自蘑菇街手机端 http://m.mogujie.com/ -->
 		<header class="header bg-white">
 		    <a class="im-talk" href="//m.mogujie.com/x/im/?imver=1.2&amp;&amp;show_header=qq#recent"></a>
@@ -146,9 +147,11 @@
 		    	</div>
 		    </div>
 		</div>
+		<foot></foot>
 	</div>		
 </template>
 <script>
+    import foot from './../../components/footer.vue'
 	export default {
 	    data:function(){
 		    return{
@@ -1463,6 +1466,7 @@
                specialWidth:{}
 		    }
 	    },
+        components:{foot},
         //加载即执行
         mounted:function(){
            var robCount = $(".rob-item li").length;

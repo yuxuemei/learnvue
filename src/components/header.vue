@@ -1,22 +1,19 @@
 <template>
-  <div class="header" v-text="msg" v-on:click="clickMe"></div>  
+  <div class="header" v-text="msg"></div>  
 </template>
 <script>
-export default {
-  name: 'header',
-  data:function () {
-    return {
-      msg: 'component header'
+    export default {
+      name: 'header',
+      data:function () {
+        return {
+          msg: 'component header'
+        }
+      },
+      methods:{
+        clickMe:function(){
+        }
+      }
     }
-  },
-  //props:['msgfromfather'], //设置要不要接受父组件的参数
-  methods:{
-    clickMe:function(){
-        //console.log(this.msgfromfather);
-        //this.$emit("child-message",this.msg)
-    }
-  }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

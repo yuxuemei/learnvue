@@ -26,30 +26,36 @@
 	    	<img v-bind:src="downloadImg" alt="下载APP">
 	    </div>
 	    <div class="mine-list">
-	    	<div class="orderT clearfix" v-for="mine in mineList.first">
-		  	    <img v-bind:src="mine.img" alt="图标" class="left">
-		  	    <div class="right">
-				  	<span class="left" v-text="mine.name"></span>
-			  	    <img v-bind:src="arrow" alt="箭头" class="right arrow">
-		  	    </div>
-		    </div>
+	    	<router-link v-bind:to="mine.to" v-for="mine in mineList.first">
+		    	<div class="orderT clearfix" >
+			  	    <img v-bind:src="mine.img" alt="图标" class="left">
+			  	    <div class="right">
+					  	<span class="left" v-text="mine.name"></span>
+				  	    <img v-bind:src="arrow" alt="箭头" class="right arrow">
+			  	    </div>
+			    </div>
+		    </router-link>
 	    </div>
 	    <div class="mine-list">
-	    	<div class="orderT clearfix" v-for="mine in mineList.second">
-		  	    <img v-bind:src="mine.img" alt="图标" class="left">
-		  	    <div class="right">
-				  	<span class="left" v-text="mine.name"></span>
-			  	    <img v-bind:src="arrow" alt="箭头" class="right arrow">
-		  	    </div>
-		    </div>
+	    	<router-link v-bind:to="mine.to" v-for="mine in mineList.second">
+		    	<div class="orderT clearfix">
+			  	    <img v-bind:src="mine.img" alt="图标" class="left">
+			  	    <div class="right">
+					  	<span class="left" v-text="mine.name"></span>
+				  	    <img v-bind:src="arrow" alt="箭头" class="right arrow">
+			  	    </div>
+			    </div>
+		    </router-link>
 	    </div>
 	    <div class="button-reb">退出登录</div>
+	    <foot v-on:child-tell-me-something='listenToMyBoy' love="love you child!"></foot>
   </div>
 </template>
 <script>
+    import foot from './../../components/footer'
     import arrow from './../../image/wallet_arrow.png'
 	export default{
-		data:function(){
+		data(){
 		    return{
 		    	headImg:"http://img3.yxlady.com/yl/UploadFiles_5361/20151215/20151215112238755.jpg",
 		    	arrow:arrow,
@@ -74,32 +80,46 @@
 		    	mineList:{
 		    		first:[{
 			    		img:"https://s10.mogucdn.com/p2/161130/159_0ihj4c5a23kabh84ka8dfhl552dla_56x56.png",
-			    		name:"我的购物车"
+			    		name:"我的购物车",
+			    		to:"/collection"
 			    	},{
 			    		img:"https://s10.mogucdn.com/p2/160822/159_00ijba9e46e13970ec7kakll8a06a_56x56.png",
-			    		name:"我的优惠券"
+			    		name:"我的优惠券",
+			    		to:"/collection"
 			    	},{
 			    		img:"https://s10.mogucdn.com/p1/160727/upload_ifqtsndeg43gkmrqmezdambqgyyde_56x56.png",
-			    		name:"我收藏的商品"
+			    		name:"我收藏的商品",
+			    		to:"/collection"
 			    	},{
 			    		img:"https://s10.mogucdn.com/p1/160727/upload_ie4wmy3gmq3wkmrqmezdambqgqyde_56x56.png",
-			    		name:"我收藏的店铺"
+			    		name:"我收藏的店铺",
+			    		to:"/collection"
 			    	}],
 			    	second:[{
 			    		img:"https:////s10.mogucdn.com/p1/160727/upload_ie4tgm3ege4wkmrqmezdambqgqyde_56x56.png",
-			    		name:"消息通知"
+			    		name:"消息通知",
+			    		to:"/collection"
 			    	},{
 			    		img:"https://s10.mogucdn.com/p1/160307/idid_ifrtqmdfgztggnzsg4zdambqhayde_84x84.png",
-			    		name:"客服"
+			    		name:"客服",
+			    		to:"/collection"
 			    	},{
 			    		img:"https://s10.mogucdn.com/p1/160727/upload_ifrdonbugezgkmrqmezdambqmeyde_56x56.png",
-			    		name:"意见反馈"
+			    		name:"意见反馈",
+			    		to:"/collection"
 			    	}]
 		        }
 		    }
 	    },
+	    components:{foot},
         //加载即执行
         mounted:function(){
+        },
+        methods:{
+        	listenToMyBoy (msg) {
+        	  //得到foot传过来的数据
+		      console.log(msg) 
+		    }
         }
 	}
 </script>

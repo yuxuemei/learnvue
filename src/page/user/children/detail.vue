@@ -1,7 +1,6 @@
 <template>
   <div>
-  	<span>文章id：{{$route.params.id}}</span>
-  	<span>文章类型：{{$route.params.name}}</span>
+  	<span>详情页</span>
   </div>
 </template>
 <script>

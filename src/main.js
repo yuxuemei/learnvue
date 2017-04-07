@@ -9,7 +9,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 import App from './App'
 //引用路由配置文件
-import routes from '../config/routes'
+import routes from './routes/routes'
 //使用配置文件规则创建路由实例
 const router = new VueRouter({
 	routes
@@ -28,11 +28,15 @@ Vue.component('my-component', header)
 // 引入公共js
 import common from './common'
 Vue.use(common)
+
+//store为实例化生成的
+import store from './store/index'
 //Vue.component('menu', menu)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   template: '<App/>',
   components: { App },
-  router
+  router,
+  store //注入到vue
 })
