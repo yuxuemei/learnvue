@@ -1,5 +1,5 @@
 <template>
-  <div class="header" v-text="msg"></div>  
+  <div class="header" v-text="msg" v-on:click="userNameChange"></div>  
 </template>
 <script>
     export default {
@@ -9,9 +9,15 @@
           msg: 'component header'
         }
       },
+      props:["placeholder"],
       methods:{
-        clickMe:function(){
+        userNameChange(){
+           //this.$store.commit("showUserName");
+           this.msg = this.$store.state.user_name
         }
+      },
+      created:function(){
+          this.msg = this.$store.state.user_name
       }
     }
 </script>

@@ -5,6 +5,7 @@ import content from '../page/shopping-car/content'
 import home from '../page/home/index'
 import mine from '../page/user/mine'
 import collection from '../page/user/collection'
+import login from '../page/user/login'
 import collectionDetail from '../page/user/children/detail'
 //配置路由
 export default[
@@ -37,6 +38,10 @@ export default[
     component:collectionDetail,
     name: '我的收藏详情',
   }]
+},{
+  path:'/login',
+  component:login,
+  name: '登录'
 },{ 
   path: "*", 
   component:home,//路径不存在

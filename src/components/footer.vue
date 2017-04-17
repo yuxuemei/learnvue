@@ -33,7 +33,8 @@
                 imgNormal:require("./../image/icon_mine.png"),
                 imgActive:require("./../image/icon_mine_clicked.png"),
                 name:"我的"
-              }]
+            }],
+            username:""
          }
     },
     props:["love"], //设置要不要接受父组件的参数
@@ -54,6 +55,8 @@
         //先把之前的删掉 再添加
         $("img").removeClass("active");
         $(".menu a").eq(index).find("img").addClass("active");
+
+        this.$store.state.user_name = "footer";
       }
     },
     //加载即执行
@@ -68,7 +71,8 @@
         let index = _activeImg.attr("id");
         $("#"+index).attr("src",this.navList[index].imgActive);
         _activeImg.addClass("active");
-        this.$emit('child-tell-me-something',"love you father!")
+        //this.$emit('child-tell-me-something',"love you father!")
+       
     }
   }
 </script>

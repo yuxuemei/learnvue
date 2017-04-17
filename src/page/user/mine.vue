@@ -3,8 +3,10 @@
 	    <header class="bg-white mine-header">
 	  	  <img v-bind:src="headImg" alt="头像" class="left">
 	  	  <div class="left">
-		  	  <span>赵丽颖</span>
-		  	  <p>我的收货地址</p>
+	  	  	    <router-link to="/login">
+			  	  <span>赵丽颖</span>
+			  	  <p>我的收货地址</p>
+		  	    </router-link>
 	  	  </div>
 	  	  <img v-bind:src="arrow" alt="头像" class="right arrow">
 	    </header>

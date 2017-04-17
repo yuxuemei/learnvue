@@ -156,42 +156,42 @@
 	    data:function(){
 		    return{
 	            robList:[{
-		              id:1,
-		              name:"红豆薏米粉500g美白祛湿",
-		              money:17.6,
-		              price:20,
-		              imgurl:"http://s2.mogucdn.com/p2/170320/upload_0ia0e8bg03584a7k7fk2kdc75i146_640x640.jpg_320x999.webp"
-		             },{
-		              id:2,
-		              name:"自然堂雪域纯粹",
-		              money:28.9,
-		              price:40,
-		              imgurl:"http://s2.mogucdn.com/p2/170316/upload_5d1c6191h5b02dc7hd4543g898j9e_640x640.jpg_320x999.webp"
-		             },{
-		              id:3,
-		              name:"无痛撕拉一套解决黑头烦恼",
-		              money:20.9,
-		              price:33,
-		              imgurl:"http://s2.mogucdn.com/p2/170322/upload_1b2jf98bck2l803c7jfc5ilki8jji_640x640.jpg_320x999.webp"
-		             },{
-		              id:4,
-		              name:"宾兽飞线情侣气垫跑步鞋",
-		              money:28.9,
-		              price:33,
-		              imgurl:"http://s2.mogucdn.com/p2/170317/upload_4gfif3cl9123b7jb5ch0j29ea8e71_640x640.jpg_320x999.webp"
-		             },{
-		              id:5,
-		              name:"美国复古眼镜",
-		              money:188,
-		              price:209,
-		              imgurl:"http://s2.mogucdn.com/p2/170106/upload_8547ldill4b997fc942g7df6d8418_640x640.jpg_320x999.webp"
-		             },{
-		              id:6,
-		              name:"全身嫩白滋润保湿身体乳",
-		              money:19,
-		              price:33,
-		              imgurl:"http://s2.mogucdn.com/p2/170320/upload_85hdj4j4dffce246dd433544ekc80_640x640.jpg_320x999.webp"
-	            }],
+				      id:1,
+				      name:"红豆薏米粉500g美白祛湿",
+				      money:17.6,
+				      price:20,
+				      imgurl:"http://s2.mogucdn.com/p2/170320/upload_0ia0e8bg03584a7k7fk2kdc75i146_640x640.jpg_320x999.webp"
+				     },{
+				      id:2,
+				      name:"自然堂雪域纯粹",
+				      money:28.9,
+				      price:40,
+				      imgurl:"http://s2.mogucdn.com/p2/170316/upload_5d1c6191h5b02dc7hd4543g898j9e_640x640.jpg_320x999.webp"
+				     },{
+				      id:3,
+				      name:"无痛撕拉一套解决黑头烦恼",
+				      money:20.9,
+				      price:33,
+				      imgurl:"http://s2.mogucdn.com/p2/170322/upload_1b2jf98bck2l803c7jfc5ilki8jji_640x640.jpg_320x999.webp"
+				     },{
+				      id:4,
+				      name:"宾兽飞线情侣气垫跑步鞋",
+				      money:28.9,
+				      price:33,
+				      imgurl:"http://s2.mogucdn.com/p2/170317/upload_4gfif3cl9123b7jb5ch0j29ea8e71_640x640.jpg_320x999.webp"
+				     },{
+				      id:5,
+				      name:"美国复古眼镜",
+				      money:188,
+				      price:209,
+				      imgurl:"http://s2.mogucdn.com/p2/170106/upload_8547ldill4b997fc942g7df6d8418_640x640.jpg_320x999.webp"
+				     },{
+				      id:6,
+				      name:"全身嫩白滋润保湿身体乳",
+				      money:19,
+				      price:33,
+				      imgurl:"http://s2.mogucdn.com/p2/170320/upload_85hdj4j4dffce246dd433544ekc80_640x640.jpg_320x999.webp"
+				    }],
                 specialList:[{
 		              price:29,
 		              imgurl:"http://s2.mogucdn.com/p2/161018/74312522_7jh18851k2f56c030392c0b3c8igb_640x960.png_185x185.jpg"
@@ -1473,6 +1473,25 @@
            var specialCount = $(".rob-item li").length;
            this.robWidth = {"width":(2*robCount)+0.16+"rem"};
            this.specialWidth = {"width":(1.72*specialCount)+0.2+"rem"};
+           this.getRobList();
+        },
+        methods:{
+        	getRobList:function(){
+        		let _this = this;
+        		//vue-resource请求
+        		this.$http.get("./../../../static/data/robList.json").then(response=>{
+        			//SE6箭头函数表示当前this作用域与外部一致
+        			this.robList = eval(response.bodyText);
+        		}
+        		//SE5写法
+        		/*function(response){
+					// 响应成功回调
+					_this.robList = eval(response.bodyText);
+				}*/
+				, function(result){
+					// 响应错误回调
+				});
+        	}
         }
 	}
 </script>
