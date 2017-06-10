@@ -14,6 +14,13 @@ html,body,p,ul,ol,h1,h2,h3,h4,h5,h6{
   margin:0;
   padding:0;
 }
+input[type=checkbox], input[type=email], input[type=number], input[type=password], input[type=radio], input[type=search], input[type=tel], input[type=text] {
+    vertical-align: middle;
+    outline: 0;
+    color: #424242;
+    -webkit-appearance: none;
+    -webkit-user-select: text;
+}
 li{
 	list-style-type: none;
 }
@@ -23,8 +30,12 @@ html,body,#app{
 .hidden{
 	display: none;
 }
+body,a{
+	color: #5e5e5e;
+}
 a{
 	text-decoration: none;
+	
 }
 .color888{
 	color: #888888;
@@ -593,4 +604,90 @@ a{
     .fontSize();
     .radius(.1rem);
     .center();
+}
+/*购物车*/
+.car-header{
+    .fontSize(0.36rem);
+    position: @relative;
+    .center();
+    height: 0.9rem;
+    line-height:0.9rem;
+    .border-bottom();
+}
+.header-right{
+	position: @absolute;
+	.fontSize(0.26rem);
+	right: 0.15rem;
+	top: 0;
+	span{
+		height: 0.5rem;
+		margin: 0.2rem 0.1rem;
+	    .left();
+        line-height: .5rem;
+         color: #5e5e5e;
+	}
+}
+@new-icon:"http://s16.mogucdn.com/p2/161025/upload_6ikcld7a2ba91958k666ja446bld2_64x60.png";
+.new-icon{
+	display: inline-block;
+	width: 0.5rem;
+	background: url("@{new-icon}");
+	background-size:100%;
+}
+.empty{
+	position: @absolute;
+	top: 50%;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+}
+.empty-text{
+    .fontSize(0.32rem);
+    .marginB();
+    color: #5e5e5e;
+}
+.empty-btn{
+	color: white;
+    background: #55c0ff;
+    .fontSize(0.3rem);
+    padding: 0.12rem 0.25rem;
+    border-radius: 0.08rem;
+    margin: 0.08rem auto;
+    width: 2rem;
+}
+.shop{
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    margin: 0.3rem 0;
+}
+@shop-checkbox:"http://s10.mogucdn.com/img/x6/img/checkbox.png";
+.shop-checkbox{
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-right: 0.1rem;
+    background: url("@{shop-checkbox}") 0 100% no-repeat;
+    background-size: 0.4rem auto;
+    border: none;
+}
+.shop-checkbox-checked{
+	background-position: 0 0;
+}
+.shop-head{
+	padding: 0.16rem 0.3rem;
+    border: none;
+    font-size: 0.28rem;
+    font-weight: 400;
+    background: #fff;
+    border-bottom: 1px solid #E5E5E5;
+}
+.shopInfo a{
+	.fontSize(0.28rem);
+}
+.goods{
+	padding: 0.16rem 0.3rem;
+}
+.goods img{
+	width: auto;
+    height: 1.92rem;
 }
