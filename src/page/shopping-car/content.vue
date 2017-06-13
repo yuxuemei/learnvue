@@ -22,10 +22,27 @@
                     <a href="" v-text="shop.shopInfo.shopName"></a>
                     <span class="right">领券</span>
                 </h3>
-                <div class="goods">
+                <div class="goods" v-for="g in shop.cartItemGroup">
                      <input type="checkbox" class="shop-checkbox">
-                     <img v-bind:src="shop.cartItemGroup[0].sku.imgUrl" alt="shop.cartItemGroup[0].sku.title">
+                     <img v-bind:src="g.sku.imgUrl" alt="shop.cartItemGroup[0].sku.title">
+                     <div class="goods-right">
+                        <p class="good-title" v-text="g.sku.title"></p>
+                        <p class="good-desc" v-text="g.sku.skuAttributes"></p>
+                        <p class="good-price">
+                            <span>{{g.sku.nowprice|price}}</span>
+                            <span class="oldprice">{{g.sku.price|price}}</span>
+                            <span class="number" v-text="'×' + g.number"></span>
+                        </p>
+                     </div> 
                 </div>
+            </div>
+            <div class="settlement">
+               <div class="selectAll">
+                  <input type="checkbox" class="shop-checkbox" id="for-all" name="for-all">
+                  <label for="for-all">全选（0）</label>
+                  <span class="color-money">￥0.00</span>
+                  <div class="settle-btn">去结算</div>
+               </div>
             </div>
         </div>    
     	  <foot></foot>
@@ -60,6 +77,11 @@
               // 响应错误回调
             });
           }
+        },
+        filters: {
+            price: function (value) {
+                return "￥"+(value/100);
+            }
         }
     }
 </script>
