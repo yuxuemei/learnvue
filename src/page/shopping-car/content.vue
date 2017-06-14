@@ -23,7 +23,7 @@
                     <span class="right">领券</span>
                 </h3>
                 <div class="goods" v-for="g in shop.cartItemGroup">
-                     <input type="checkbox" class="shop-checkbox" :class='{"shop-checkbox-checked":g.check}' @click="goodChecked(g)">
+                     <input type="checkbox" class="shop-checkbox" :class='{"shop-checkbox-checked":g.check}' @click="goodChecked(shop,g)">
                      <img v-bind:src="g.sku.imgUrl" alt="g.sku.title">
                      <div class="goods-right">
                         <p class="good-title" v-text="g.sku.title"></p>
@@ -41,7 +41,7 @@
                   <input type="checkbox" class="shop-checkbox" id="for-all" name="for-all" :class='{"shop-checkbox-checked":checkAll}' @click="allChecked">
                   <label for="for-all">全选（{{checkLength}}）</label>
                   <span class="color-money">{{goodsMoney|price}}</span>
-                  <div class="settle-btn">去结算</div>
+                  <div class="settle-btn" @click="goSettlement">去结算</div>
                </div>
             </div>
         </div>    
@@ -81,26 +81,36 @@
             });
           },
           //选中函数-公用
-          checked:function(item){
+          checked:function(item,isCheck){
             //判断是否有选中的属性
             if(typeof item.check == "undefined"){
-                this.$set(item,"check",true);
+                this.$set(item,"check",isCheck);
             }else{
                 item.check = !item.check;
             }
+            return item.check;
           },
           //店铺选中
           shopChecked:function(shop){
-            this.checked(shop);
+            this.checked(shop,true);
             //店铺选中时把店铺下面的商品都选中
             shop.cartItemGroup.forEach((item,index)=>{
-               this.checked(item);
+               this.checked(item,true);
             })
           },
           //商品选中并计算价格
-          goodChecked:function(good){
-            this.checked(good);
-            this.goodsMoney += good.sku.nowprice;
+          goodChecked:function(shop,good){
+            this.checked(shop,true);
+            var checked = this.checked(good,true);
+            var goodPrice = good.sku.nowprice*good.number;
+            //选中增加总金额，取消减少总金额
+            if(checked){
+                this.goodsMoney += goodPrice;
+                this.checkLength +=1;
+            }else{
+                this.goodsMoney -= goodPrice;
+                this.checkLength -=1;
+            }
           },
           //全选/取消全选
           allChecked:function(){
@@ -111,12 +121,25 @@
                 this.checkLength = 0;
             }
             this.goodsList.forEach((item,index)=>{
-                if(typeof item.check == "undefined"){
-                    this.$set(item,"check",this.checkAll);
-                }else{
-                    item.check = this.checkAll;
-                }
+                this.checked(item,this.checkAll);
+                //店铺选中时把店铺下面的商品都选中
+                item.cartItemGroup.forEach((itemGood,index)=>{
+                  this.checked(itemGood,this.checkAll);
+                  //汇总金额
+                  if(this.checkAll){
+                      this.goodsMoney += (itemGood.sku.nowprice*itemGood.number);
+                  }else{
+                      this.goodsMoney  = 0;
+                  }
+                })
             })
+          },
+          goSettlement:function(){
+              if(!this.checkLength){
+                  alert("请选择商品");
+              }else{
+                 window.location.href="/#/order";
+              }
           }
         },
         //价格过滤

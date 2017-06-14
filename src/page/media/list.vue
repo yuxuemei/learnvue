@@ -9,26 +9,29 @@
     </div>
     <div class="bg-white">
         <div class="article-item" v-for="(article,index) in articleList">
-              <router-link v-bind:to="'/articleDetail/' + article.articleId+'/'+article.categoryName">
+              <a href="javascript:;" @click="enterDetail(article.articleId,article.categoryName)">
                <div><img v-bind:src="img" v-bind:alt="article.title"></div>
                <div>
                  <p class="item-title" v-text="article.title" ></p>
                  <p class="item-info">
                    <span v-text="article.createTime" ></span>
-                   <span class="right" v-on:click="deleteData(index)">删除</span>
+                   <span class="right" v-on:click="deleteData(index,$event)">删除</span>
                  </p>
                </div>
-           </router-link>
+           </a>
         </div>
     </div>
+    <confirm dialogText="确定删除商品吗" v-show="isDiglog" isShow = "isDiglog" @getChildMess='listenToConfirm'></confirm>
     <foot></foot>
   </div>
 </template>
 <script>
   import foot from './../../components/footer.vue'
+  import confirm from './../../components/confirm.vue'
 	export default {
 	    data:function(){
 		    return{
+          isDiglog:false,
            flagList:[{
               id:1,
               name:"社会"
@@ -53,7 +56,7 @@
            img:"http://wx1.sinaimg.cn/mw690/4b0c804agy1fbz8z3b39lj21ww1wwu0x.jpg"
 		    }
 	    },
-      components:{foot},
+      components:{foot,confirm},
       //加载即执行
       mounted:function(){
          var count = $(".flag li").length;
@@ -73,8 +76,16 @@
            });*/
       },
       methods:{
-        deleteData:function(index){
-          this.articleList.splice(index,1);
+        enterDetail:function(id,name,event){
+           location.href="/#/articleDetail/"+id+"/"+name;
+        },
+        deleteData:function(index,event){
+           this.isDiglog = true;
+           event.stopPropagation();
+          //this.articleList.splice(index,1);
+        },
+        listenToConfirm:function(isDiglog){ 
+            this.isDiglog = false;
         }
       }
 	}

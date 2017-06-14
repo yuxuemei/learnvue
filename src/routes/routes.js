@@ -2,6 +2,7 @@
 import list from '../page/media/list'
 import articleDetail from '../page/media/detail'
 import content from '../page/shopping-car/content'
+import order from '../page/shopping-car/order'
 import home from '../page/home/index'
 import mine from '../page/user/mine'
 import collection from '../page/user/collection'
@@ -25,6 +26,10 @@ export default[
   path:'/content',
   component:content,
   name: '购物车'
+},{
+  path:'/order',
+  component:order,
+  name: '确认订单'
 },{
   path:'/mine',
   component:mine,
